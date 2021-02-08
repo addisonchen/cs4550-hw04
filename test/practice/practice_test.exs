@@ -28,4 +28,15 @@ defmodule Practice.PracticeTest do
   end
 
   # TODO: Add two unit tests for palindrome.
+  test "check for some palindromes" do
+    assert palindrome?("abcba") == true
+    assert palindrome?("") == true
+    assert palindrome?("aabbcc") == false
+    assert palindrome?("1234abccba4321") == true
+    assert palindrome?("12 34 56 a654321") == true
+    assert palindrome?("abc cbaa") == false
+    assert palindrome?("aaweoaoihre") == false
+    assert palindrome?("   ") == true
+  end
+  
 end

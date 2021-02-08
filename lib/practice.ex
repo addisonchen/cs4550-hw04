@@ -22,4 +22,17 @@ defmodule Practice do
   end
 
   # TODO: Add a palindrome? function.
+  def palindrome?(x) do
+    # remove invalid characters
+    s = String.replace(x, ~r/[^0-9a-zA-Z ]/, "")
+    # remove whitespace
+    s = s |> String.split |> Enum.join("")
+    # make it into a list
+    l = s |> String.split("", trim: true)
+    # make a reversed list
+    r = Enum.reverse(l)
+
+
+    l == r
+  end
 end
