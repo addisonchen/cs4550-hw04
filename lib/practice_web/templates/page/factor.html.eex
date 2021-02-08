@@ -4,6 +4,6 @@
     <h2>Factor Results</h2>
 
     <p>x = <%= @x %></p>
-    <p>Factors: <%= @y %></p>
+    <p>Prime Factors: <%= @y %></p>
   </div>
 </div>

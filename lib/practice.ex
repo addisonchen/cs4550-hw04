@@ -18,7 +18,7 @@ defmodule Practice do
 
   def factor(x) do
     # Maybe delegate this too.
-    [1,2,x]
+    Practice.Factor.factor(x)
   end
 
   # TODO: Add a palindrome? function.
@@ -31,8 +31,7 @@ defmodule Practice do
     l = s |> String.split("", trim: true)
     # make a reversed list
     r = Enum.reverse(l)
-
-
+    # return if the reverse is the same as forwards
     l == r
   end
 end

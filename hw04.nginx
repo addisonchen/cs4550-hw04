@@ -2,7 +2,6 @@ server {
     listen 80;
     listen [::]:80;
 
-    # TODO: This should be your server name. DONE
     server_name hw04.swoogity.com;
 
     location / {
