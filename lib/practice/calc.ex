@@ -158,11 +158,10 @@ defmodule Practice.Calc do
       |> filterInvalid
 
     if isValid(exprl) do
-      postfixed = exprl
+      exprl
       |> tag
       |> postfix
-      #IO.inspect(postfixed)
-      postfixed |> postfixCalculate
+      |> postfixCalculate
     else
       "Invalid input"
     end
