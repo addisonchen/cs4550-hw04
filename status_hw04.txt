@@ -5,22 +5,22 @@ Please fill in answers to the questions below:
 Addison Chen
 
 2. What hostname did you deploy your app to?
-
+hw04.swoogity.com
 
 3. What's the URL of your git for this assignment?
-
+https://github.com/addisonchen/cs4550-hw04
 
 4. How much of the functionality did you complete?
-
+Pretty sure i did it all?
 
 5. Did you successfully deploy? If not, what's broken?
-
+Yes
 
 6. How comfortable do you feel with Elixir now?
-
+50/50, need google to do anything
 
 7. Which parts of this assignment did you have trouble with, if any?
-
+Learning how to do recursion again
 
 
 
