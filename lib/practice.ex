@@ -7,8 +7,15 @@ defmodule Practice do
   if it comes from the database, an external API or others.
   """
 
-  def double(x) do
-    2 * x
+  def double(x) when is_binary(x) do
+    case Float.parse(x) do
+      {num, ""} -> 2 * num
+      _ -> "NaN"
+    end
+  end
+
+  def double(x) when is_number(x) do
+    x * 2
   end
 
   def calc(expr) do

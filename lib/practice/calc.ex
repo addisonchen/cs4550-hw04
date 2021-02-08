@@ -49,14 +49,6 @@ defmodule Practice.Calc do
     order.soFar && allValidSymbols && isANumber(order.prev)
   end
 
-  # take an expression list 
-  # remove non number or operation characters
-  defp filterInvalid(exprl) do
-    Enum.filter(exprl, fn(x) ->
-      isANumber(x) || isAOp(x)
-    end)
-  end
-
   # Take a list of nums and ops
   # Return a tagged list of expressions
   defp tag(exprl) do
@@ -153,9 +145,7 @@ defmodule Practice.Calc do
   def calc(expr) do
     # This should handle +,-,*,/ with order of operations,
     # but doesn't need to handle parens.
-    exprl = expr 
-      |> String.split(~r/\s+/) 
-      |> filterInvalid
+    exprl = Regex.split( ~r/\s+/, expr, trim: true) 
 
     if isValid(exprl) do
       exprl
@@ -163,7 +153,7 @@ defmodule Practice.Calc do
       |> postfix
       |> postfixCalculate
     else
-      "Invalid input"
+      "Invalid input, numbers and + - / * only with whitespace between"
     end
     # Hint:
     # expr

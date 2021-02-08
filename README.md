@@ -13,6 +13,11 @@
  - ## Arithmetic Expressions ##
   - Converts to postfix
   - evaluates with a postfix calculator
-  - filters out all charachters that are not a number or a valid operation (+, -, /, *)
-    - i.e.: "4 * ( 6 + 2 )" becomes "4 * 6 + 2" and evaluates to 26
+  - does not evaluate if any characters are not a number or + - / *
+    - all symbols and letters will cause you to not get an answer
+  - checks for valid order
+    - must start and end with a number
+    - numbers must follow operators, and operators must follow numbers
+  - fails softly
+    - says "invalid input... ", server does not break
 

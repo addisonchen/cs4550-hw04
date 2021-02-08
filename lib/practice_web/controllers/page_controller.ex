@@ -6,7 +6,6 @@ defmodule PracticeWeb.PageController do
   end
 
   def double(conn, %{"x" => x}) do
-    {x, _} = Integer.parse(x)
     y = Practice.double(x)
     render conn, "double.html", x: x, y: y
   end
