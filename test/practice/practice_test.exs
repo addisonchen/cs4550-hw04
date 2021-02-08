@@ -25,6 +25,7 @@ defmodule Practice.PracticeTest do
     assert calc("10 - 2") == 8
     assert calc("5 * 3 + 8") == 23
     assert calc("8 + 5 * 3") == 23
+    assert calc("(8 + 5) * 3") == "Invalid input"
   end
 
   # TODO: Add two unit tests for palindrome.

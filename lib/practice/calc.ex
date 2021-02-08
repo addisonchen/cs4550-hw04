@@ -31,16 +31,22 @@ defmodule Practice.Calc do
   # - start with a number
   # - end with a number
   defp isValid(exprl) do
-    prev = "-"
-    order = Enum.reduce(exprl, true, fn(x, acc) ->
+    unless length(exprl) >= 3 do
+      false
+    end
+
+    allValidSymbols = Enum.reduce(exprl, true, fn(x, acc) ->
+      acc && (isAOp(x) || isANumber(x))
+    end)
+
+    order = Enum.reduce(exprl, %{soFar: true, prev: "-"}, fn(x, acc) ->
       cond do
-        isAOp(prev) && isANumber(x) -> acc && true
-        isANumber(prev) && isAOp(x) -> acc && true
-        true -> acc && false 
-        prev = x 
+        isAOp(acc.prev) && isANumber(x) -> %{soFar: acc.soFar && true, prev: x}
+        isANumber(acc.prev) && isAOp(x) -> %{soFar: acc.soFar && true, prev: x}
+        true -> %{soFar: acc.soFar && false, prev: x}
       end
     end)
-    isANumber(prev) && order
+    order.soFar && allValidSymbols && isANumber(order.prev)
   end
 
   # take an expression list 
@@ -87,11 +93,12 @@ defmodule Practice.Calc do
     end
   end
 
-  # handles end of postfixing recursion, empty stack
+  # handles end of postfixing recursion, empty the stack and append to result
   def postfix([], [head | tail], result) do
     postfix([], tail, result ++ [{:op, head}])
   end
 
+  # all stacks empty, return result
   def postfix([], [], result) do
     result
   end
@@ -123,6 +130,7 @@ defmodule Practice.Calc do
     end
   end
   
+  # final case, empty texprl
   def postfixCalculate([], stack) do
     hd(stack)
   end
@@ -149,16 +157,15 @@ defmodule Practice.Calc do
       |> String.split(~r/\s+/) 
       |> filterInvalid
 
-    unless isValid(exprl) do
+    if isValid(exprl) do
+      postfixed = exprl
+      |> tag
+      |> postfix
+      #IO.inspect(postfixed)
+      postfixed |> postfixCalculate
+    else
       "Invalid input"
     end
-    
-    postfixed = exprl
-    |> tag
-    |> postfix
-    #IO.inspect(postfixed)
-    postfixed |> postfixCalculate
-
     # Hint:
     # expr
     # |> split

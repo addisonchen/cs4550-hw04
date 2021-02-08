@@ -11,8 +11,16 @@ defmodule PracticeWeb.PageController do
     render conn, "double.html", x: x, y: y
   end
 
+  defp calcCheckEmpty(expr) do
+    if (expr == "") do
+      Practice.calc("0")
+    else
+      Practice.calc(expr)
+    end
+  end
+
   def calc(conn, %{"expr" => expr}) do
-    y = Practice.calc(expr)
+    y = calcCheckEmpty(expr)
     render conn, "calc.html", expr: expr, y: y
   end
 

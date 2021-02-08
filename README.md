@@ -1,19 +1,18 @@
-# Practice
+## DESIGN DECISIONS ##
 
-To start your Phoenix server:
+ - ## Palindrome ##
+  - all strings are valid
+  - checks for a palindrome made of numbers and letters ("a4a" is a palindrome)
+  - ignores all symbols and white space ("a b$a" is a palindrome)
 
-  * Install dependencies with `mix deps.get`
-  * Install Node.js dependencies with `npm install` inside the `assets` directory
-  * Start Phoenix endpoint with `mix phx.server`
+ - ## Factorization ##
+  - Handles int and string inputs (for different kinds of tests)
+  - Returns a list if input is an int
+  - Joins the list into a string if input is a string
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+ - ## Arithmetic Expressions ##
+  - Converts to postfix
+  - evaluates with a postfix calculator
+  - filters out all charachters that are not a number or a valid operation (+, -, /, *)
+    - i.e.: "4 * ( 6 + 2 )" becomes "4 * 6 + 2" and evaluates to 26
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
